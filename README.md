@@ -51,8 +51,8 @@ Detect modified image from originals
 
 
 Images :
-Original : <a href="lenna.jpg"><img src="lenna.jpg" height="100"/></a>
-Similarity 100% : <a href="images/lenna.jpg"><img src="images/lenna.jpg" height="100"/></a>
+Original : <a href="lenna.png"><img src="lenna.png" height="100"/></a>
+Similarity 100% : <a href="images/lenna.png"><img src="images/lenna.png" height="100"/></a>
 Cropped image 93% : <a href="images/lenna-crop.jpg"><img src="images/lenna-crop.jpg" height="100"/></a>
 Text inserted 72% : <a href="images/lenna1.jpg"><img src="images/lenna1.jpg" height="100"/></a>
 
