@@ -112,7 +112,7 @@ Training:
     from shazim import ShazimEngine
 
     shazim = ShazimEngine()
-    shazim.parse(args.path)
+    shazim.parse("images")
     shazim.train()
     shazim.save()
 
