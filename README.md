@@ -34,11 +34,10 @@ Basic usage
     images\000000037689.jpg at 75%
 
 
-Images :
-Original : <a href="ski.jpg"><img src="ski.jpg" height="100"/></a>
-Similarity 100% : <a href="images/ski_copy.jpg"><img src="images/ski_copy.jpg" height="100"/></a>
-Similarity 84% : <a href="images/ski2.jpg"><img src="images/ski2.jpg" height="100"/></a>
-Similarity 75% : <a href="images/000000037689.jpg"><img src="images/000000037689.jpg" height="100"/></a>
+Original: <a href="ski.jpg"><img src="ski.jpg" height="100"/></a>
+Copy 100%: <a href="images/ski_copy.jpg"><img src="images/ski_copy.jpg" height="100"/></a>
+Flip 84%: <a href="images/ski2.jpg"><img src="images/ski2.jpg" height="100"/></a>
+Other 75%: <a href="images/000000037689.jpg"><img src="images/000000037689.jpg" height="100"/></a>
 
 Detect modified image from originals
 
@@ -50,11 +49,10 @@ Detect modified image from originals
     images\lenna1.jpg at 72%
 
 
-Images :
-Original : <a href="lenna.png"><img src="lenna.png" height="100"/></a>
-Similarity 100% : <a href="images/lenna.png"><img src="images/lenna.png" height="100"/></a>
-Cropped image 93% : <a href="images/lenna-crop.jpg"><img src="images/lenna-crop.jpg" height="100"/></a>
-Text inserted 72% : <a href="images/lenna1.jpg"><img src="images/lenna1.jpg" height="100"/></a>
+Original: <a href="lenna.png"><img src="lenna.png" height="100"/></a>
+Same 100%: <a href="images/lenna.png"><img src="images/lenna.png" height="100"/></a>
+Cropped image 93%: <a href="images/lenna-crop.jpg"><img src="images/lenna-crop.jpg" height="100"/></a>
+Text inserted 72%: <a href="images/lenna1.jpg"><img src="images/lenna1.jpg" height="100"/></a>
 
 Avanced usage
 --------------
