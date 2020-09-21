@@ -155,13 +155,13 @@ class ShazimEngine:
         score = (res["ddh"] * w[0] + res["dah"] * w[1] + res["dfv"] * w[2]) / sum(w)
         return score
 
-    def shazim(self, im):
+    def shazim(self, im, thresold=0.75):
         bests = []
         for k in self.db.keys():
             if im.path != k:
                 im2 = self.db[k]
                 score = self.predict(im, im2)
-                if score > 0.75:
+                if score > thresold:
                     bests.append((k, score))
         bests.sort(key = lambda x : x[1], reverse=True)
         return bests[:10]
@@ -174,25 +174,29 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Shazim")
     parser.add_argument("path", help="Path")
     parser.add_argument("-p","--parse", action="store_true", help="Parse the path directory")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Verbose and thresold to 0.5")
     args = parser.parse_args()
     os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-    if args.parse: #-p C:\Users\conta\CVC\3C-Evolution\git3ce\images
-        print(f"Parse {args.path} directory")
+    if args.parse: #-p images
         shazim = ShazimEngine()
         shazim.parse(args.path)
         shazim.train()
         shazim.save()
-    else: #test.png
+    else: #ski.jpg
         print("Load index")
         shazim = ShazimEngine()
         shazim.load()
         print(f"Load image {args.path}")
         im = shazim.load_image(args.path)
         print("Shazim...")
-        res = shazim.shazim(im)
+        thresold = 0.5 if args.verbose else 0.7
+        res = shazim.shazim(im, thresold)
         print(f"Found {len(res)} image(s)")
         for i in res:
             print(f"{i[0]} at {i[1]*100:.0f}%")
+            if args.verbose:
+                diff = im - shazim.db[i[0]]
+                print(diff)
 
 
 
