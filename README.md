@@ -36,9 +36,7 @@ Basic usage
 
 
 Images :
-    - .. image:: ski.png
-
-Source hosted at GitHub: https://github.com/CyrilVincent/shazim
+    - <a href="ski.jpg">ski.jpg</a>
 
 Avanced usage
 --------------
@@ -135,6 +133,8 @@ Hash image
     im.dh #Difference hash
     im.fv #MobileNet hash
 
+Source hosted at GitHub: https://github.com/CyrilVincent/shazim
+http://www.CyrilVincent.com
 
 Links
 ------
