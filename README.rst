@@ -34,7 +34,8 @@ Basic usage
     images\ski2.jpg at 84%
     images\000000037689.jpg at 75%
 
-.. image:: ./ski.png
+
+.. image:: ski.png
 
 Source hosted at GitHub: https://github.com/CyrilVincent/shazim
 
