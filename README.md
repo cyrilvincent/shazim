@@ -146,6 +146,54 @@ Hash image
     im.ah #Average hash
     im.dh #Difference hash
     im.fv #MobileNet hash
+    
+Understand Image Hashing vs Deep Learning
+
+Image hashing compute a 8x8 matrix and detect similar image or photoshoed image
+For Image Hashing those images are the same
+<img src="images/forest-high.jpg" height="100/> vs <img src="images/forest-copyright.jpg" height="100/> 
+    
+    shazim.py images\forest-high.jpg
+    
+    Shazim...
+    Found 1 image(s)
+    images\forest-copyright.jpg at 98%
+
+And those images are differents
+<img src="images/tumblr1.jpg" height="100/> vs <img src="images/tumblr.jpg" height="100/>
+
+    shazim.py images\tumblr1.jpg
+    
+    Shazim...
+    Found 0 image(s)
+
+Deep Learning wants to detect that images are the same
+
+Let see the prediction with -v option :
+
+    shazim.py images\tumblr1.jpg -v
+    
+    Found 10 image(s)
+    images\tumblr2.jpg at 70%
+    {'dah': 0.609, 'ddh': 0.453, 'dfv': 0.86, 'dsize': 2596}
+    # dh : Difference hash doest not detect anything
+    # ah : Average hash detect only 61% similarity
+    # fv : MobileNet detect well at 86%
+    
+    #Ponderation between hash methodes are w = [1.0,1.0,2.0]
+
+How to code this with Deep Learning only
+
+    from shazim import ShazimEngine
+
+    shazim = ShazimEngine()
+    im1 = shazim.load_image("tumblr1.jpg")
+    im2 = shazim.load_image("tumblr2.jpg")
+    res = im1 - im2
+    res["dfv"]
+    
+
+
 
 Sources hosted at GitHub: https://github.com/CyrilVincent/shazim
 
