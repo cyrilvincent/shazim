@@ -4,3 +4,4 @@ imagehash
 numpy
 scipy
 Pillow
+scikit-image

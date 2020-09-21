@@ -10,7 +10,6 @@ from absl import logging
 from typing import Dict
 from PIL import Image
 
-
 class ShazimEntity:
 
     def __init__(self, path):
@@ -23,22 +22,22 @@ class ShazimEntity:
         res = {}
         res["dah"] = round(1 - (self.ah - other.ah) / len(self.ah.hash) ** 2, 3)
         res["ddh"] = round(1 - (self.dh - other.dh) / len(self.dh.hash) ** 2, 3)
-        res["dfv"] = round(1 - spatial.distance.cosine(self.fv, other.fvhash), 3)
+        res["dfv"] = round(1 - spatial.distance.cosine(self.fv, other.fv), 3)
         return res
 
     def __repr__(self):
-        return f"{self.name}"
+        return f"{self.path}"
 
 class ShazimService:
 
-    model = None
+    fvmodel = None
 
     def __init__(self, path):
         self.path = path
-        if ShazimService.model == None:
-            print(f"Load TensorFlow model: ")
-            ShazimService.model = tf.saved_model.load("hubmodule/feature-vector.4")
+        if ShazimService.fvmodel == None:
             logging.set_verbosity(logging.ERROR)
+            print(f"Load TensorFlow model: ")
+            ShazimService.fvmodel = tf.saved_model.load("hubmodule/feature-vector.4")
         self.pil = Image.open(path)
         self.size = os.stat(path)[6]
         self.tfimg = self.load_img(self.path)
@@ -62,7 +61,7 @@ class ShazimService:
         https://towardsdatascience.com/image-similarity-detection-in-action-with-tensorflow-2-0-b8d9a78b2509
         :return:
         """
-        features = ShazimService.model(self.tfimg)
+        features = ShazimService.fvmodel(self.tfimg)
         return np.squeeze(features)
 
     def load_img(self, path):
@@ -125,20 +124,23 @@ class ShazimEngine:
             if i % max(10,int(self.nbi / 100)) == 0:
                 print(f"Hash {i + 1}/{self.nbi} in {time.perf_counter() - t:.1f} s")
             im = self.db[k]
-            try:
-                self.load_image(k)
-            except Exception as ex:
-                print(f"Error with {im}: {ex}")
+            # try:
+            self.h_image(im)
+            # except Exception as ex:
+            #     print(f"Error with {im}: {ex}")
             i+=1
         print(f"Hashed in {time.perf_counter() - t:.1f} s")
 
     def load_image(self, path):
         im = ShazimEntity(path)
-        service = ShazimService(path)
+        self.h_image(im)
+        return im
+
+    def h_image(self, im):
+        service = ShazimService(im.path)
         im.ah = service.ah()  # 8x8
         im.dh = service.dh()  # 8x8
         im.fv = service.fv()  # 1280
-        return im
 
     def predict(self, im1, im2, weigths=[1.0,1.0,2.0]):
         res = im1 - im2
