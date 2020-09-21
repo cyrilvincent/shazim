@@ -23,8 +23,8 @@ def fvhash(im):
     features = model(im)
     return np.squeeze(features)
 
-def __sub__(h1, h2):
-    return spatial.distance.cosine(h1, h2)
+def __sub__(self, other):
+    return spatial.distance.cosine(self, other)
 
 im1 = load_img(path1)
 im2 = load_img(path2)

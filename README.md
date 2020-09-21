@@ -79,7 +79,6 @@ Thresold = 50% instead of 75%:
     # dah: AverageHash score (generate a 8x8 matrix with average points and compute the hamming distance)
     # ddh: Difference Hash (generate 8x8 matrix with Discret Cosine Transform from gradients and compute the hamming distance)
     # dfv: Feature Vector Hash (generate a 1280 vector from the output of the convulational parts of the MobileNet network and compute the cosine distance)
-    # dsize: Image size difference
     # Wavelets hash are not used beacause it's too slow and perceptual hash are not used because difference hash is better
     # VGG*, Inception*, ResNet* are not used because the training is too slow
     
@@ -88,25 +87,25 @@ Thresold = 50% instead of 75%:
     Parse images
     Found 10 image(s)
     images\ski.jpg at 100%
-    {'dah': 1.0, 'ddh': 1.0, 'dfv': 1.0, 'dsize': 0}
+    {'dah': 1.0, 'ddh': 1.0, 'dfv': 1.0}
     images\ski_copy.jpg at 100%
-    {'dah': 1.0, 'ddh': 1.0, 'dfv': 1.0, 'dsize': 0}
+    {'dah': 1.0, 'ddh': 1.0, 'dfv': 1.0}
     images\ski2.jpg at 84%
-    {'dah': 0.953, 'ddh': 0.719, 'dfv': 0.836, 'dsize': 363613}
+    {'dah': 0.953, 'ddh': 0.719, 'dfv': 0.836}
     images\000000037689.jpg at 75%
-    {'dah': 0.875, 'ddh': 0.578, 'dfv': 0.782, 'dsize': 320281}
+    {'dah': 0.875, 'ddh': 0.578, 'dfv': 0.782}
     images\000000038118.jpg at 73%
-    {'dah': 0.844, 'ddh': 0.609, 'dfv': 0.73, 'dsize': 373509}
+    {'dah': 0.844, 'ddh': 0.609, 'dfv': 0.73}
     images\ski3.jpg at 71%
-    {'dah': 0.828, 'ddh': 0.5, 'dfv': 0.754, 'dsize': 316568}
+    {'dah': 0.828, 'ddh': 0.5, 'dfv': 0.754}
     images\cat.10994.jpg at 57%
-    {'dah': 0.531, 'ddh': 0.422, 'dfv': 0.661, 'dsize': 465555}
+    {'dah': 0.531, 'ddh': 0.422, 'dfv': 0.661}
     images\cat.11016.jpg at 57%
-    {'dah': 0.625, 'ddh': 0.562, 'dfv': 0.544, 'dsize': 461972}
+    {'dah': 0.625, 'ddh': 0.562, 'dfv': 0.544}
     images\00000005.jpg at 55%
-    {'dah': 0.656, 'ddh': 0.375, 'dfv': 0.591, 'dsize': 468151}
+    {'dah': 0.656, 'ddh': 0.375, 'dfv': 0.591}
     images\lenna1.jpg at 54%
-    {'dah': 0.5, 'ddh': 0.5, 'dfv': 0.582, 'dsize': 443493}
+    {'dah': 0.5, 'ddh': 0.5, 'dfv': 0.582}
 
 API
 ---
@@ -153,7 +152,7 @@ Understand Image Hashing vs Deep Learning
 
 Image hashing compute a 8x8 matrix and detect similar image or photoshoped image
 
-For Image Hashing those images are in the same category :
+For Image Hashing these images are in the same category :
 <a href="images/forest-high.jpg"><img src="images/forest-high.jpg" height="100"/></a> <a href="images/forest-copyright.jpg"><img src="images/forest-copyright.jpg" height="100"/></a>
     
     shazim.py images\forest-high.jpg
@@ -162,7 +161,7 @@ For Image Hashing those images are in the same category :
     Found 1 image(s)
     images\forest-copyright.jpg at 98%
 
-And those images are differents :
+And these images are differents :
 <a href="images/tumblr1.jpg"><img src="images/tumblr1.jpg" height="100"/></a> <a href="images/tumblr2.jpg"><img src="images/tumblr2.jpg" height="100"/></a>
 
     shazim.py images\tumblr1.jpg
@@ -170,7 +169,7 @@ And those images are differents :
     Shazim...
     Found 0 image(s)
 
-Deep Learning wants to detect that images are the same
+Deep Learning wants to detect hat these images are quite similar
 
 Let see the prediction with -v option :
 
@@ -178,12 +177,11 @@ Let see the prediction with -v option :
     
     Found 10 image(s)
     images\tumblr2.jpg at 70%
-    {'dah': 0.609, 'ddh': 0.453, 'dfv': 0.86, 'dsize': 2596}
+    {'dah': 0.609, 'ddh': 0.453, 'dfv': 0.86}
     # dh : Difference hash doest not detect anything
     # ah : Average hash detect only 61% similarity
     # fv : MobileNet detect well at 86%
-    
-    #Ponderation between hash methodes are w = [1.0,1.0,2.0]
+    # Ponderation between hash methodes are weights = [1.0,1.0,2.0]
 
 How to changes ponderation betweens models :
 
@@ -193,7 +191,7 @@ How to changes ponderation betweens models :
     shazim.load()
     im = shazim.load_image("ski.jpg")
     thresold = 0.75
-    weights = [1.0,1.0,2.0] #defaults
+    weights = [0.5,0.5,3.0] #ah, dh, fv
     res = shazim.shazim(im, thresold, weights)
 
 How to code this with Deep Learning only
@@ -208,7 +206,7 @@ How to code this with Deep Learning only
     
     # or
     
-    weights = [0.0,0.0,1.0] #ad, dh, fv
+    weights = [0.0,0.0,1.0] #ah, dh, fv
     shazim.predict(im1, im2, weights)
     
 How to code this with Image Hash only
@@ -225,9 +223,6 @@ How to code this with Image Hash only
     
     weights = [0.5,0.5,0.0] #ad, dh, fv
     shazim.predict(im1, im2, weights)
-    
-
-
 
 Sources hosted at GitHub: https://github.com/CyrilVincent/shazim
 
