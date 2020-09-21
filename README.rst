@@ -35,7 +35,8 @@ Basic usage
     images\000000037689.jpg at 75%
 
 
-.. image:: ski.png
+Images :
+    - .. image:: ski.png
 
 Source hosted at GitHub: https://github.com/CyrilVincent/shazim
 
@@ -57,11 +58,12 @@ Image directory must be parsed for training before Shazim
 
 Verbose detection
 ------------------
-Thresold = 50% instead of 75%
-dah: AverageHash score (compare a 8x8 matrix with average points with hamming distance)
-ddh: Difference Hash (compare 8x8 matrix with Discret Cosine Transform from gradients with hamming distance)
-dfv: Feature Vector Hash (compare a 1280 vector from the output of the convulational parts of the MobileNet network with Cosine distance)
-dsize: Image size difference
+Thresold = 50% instead of 75%:
+    - dah: AverageHash score (compare a 8x8 matrix with average points with hamming distance)
+    - ddh: Difference Hash (compare 8x8 matrix with Discret Cosine Transform from gradients with hamming distance)
+    - dfv: Feature Vector Hash (compare a 1280 vector from the output of the convulational parts of the MobileNet network with Cosine distance)
+    - dsize: Image size difference
+
 ::
 
     shazim.py -v ski.jpg
