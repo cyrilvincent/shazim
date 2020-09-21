@@ -183,6 +183,17 @@ Let see the prediction with -v option :
     
     #Ponderation between hash methodes are w = [1.0,1.0,2.0]
 
+How to changes ponderation betweens models :
+
+    from shazim import ShazimEngine
+
+    shazim = ShazimEngine()
+    shazim.load()
+    im = shazim.load_image("ski.jpg")
+    thresold = 0.75
+    weights = [1.0,1.0,2.0] #defaults
+    res = shazim.shazim(im, thresold, weights)
+
 How to code this with Deep Learning only
 
     from shazim import ShazimEngine
@@ -192,6 +203,11 @@ How to code this with Deep Learning only
     im2 = shazim.load_image("tumblr2.jpg")
     res = im1 - im2
     res["dfv"]
+    
+    # or
+    
+    weights = [0.0,0.0,1.0] #ad, dh, fv
+    shazim.predict(im1, im2, weights)
     
 
 

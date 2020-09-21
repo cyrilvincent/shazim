@@ -15,14 +15,12 @@ class ShazimEntity:
 
     def __init__(self, path):
         self.path = path
-        self.size = 0
         self.ah = None
         self.dh = None
         self.fv = None
 
     def __sub__(self, other):
-        res = {"dah":None, "ddh":None, "dfv":None, "dsize":None}
-        res["dsize"] = abs(self.size - other.size)
+        res = {}
         res["dah"] = round(1 - (self.ah - other.ah) / len(self.ah.hash) ** 2, 3)
         res["ddh"] = round(1 - (self.dh - other.dh) / len(self.dh.hash) ** 2, 3)
         res["dfv"] = round(1 - spatial.distance.cosine(self.fv, other.fv),3)
@@ -128,11 +126,7 @@ class ShazimEngine:
                 print(f"Hash {i + 1}/{self.nbi} in {time.perf_counter() - t:.1f} s")
             im = self.db[k]
             try:
-                service = ShazimService(k)
-                im.size = service.size
-                im.ah = service.ah()  # 8x8
-                im.dh = service.dh()  # 8x8
-                im.fv = service.fv()
+                self.load_image(k)
             except Exception as ex:
                 print(f"Error with {im}: {ex}")
             i+=1
@@ -141,32 +135,26 @@ class ShazimEngine:
     def load_image(self, path):
         im = ShazimEntity(path)
         service = ShazimService(path)
-        im.size = service.size
         im.ah = service.ah()  # 8x8
         im.dh = service.dh()  # 8x8
-        im.fv = service.fv()
+        im.fv = service.fv()  # 1280
         return im
 
-    def predict(self, im1, im2):
-        if im1.size == im2.size:
-            return 1.0
+    def predict(self, im1, im2, weigths=[1.0,1.0,2.0]):
         res = im1 - im2
-        w = [1.0,1.0,2.0]
-        score = (res["ddh"] * w[0] + res["dah"] * w[1] + res["dfv"] * w[2]) / sum(w)
+        score = (res["ddh"] * weigths[0] + res["dah"] * weigths[1] + res["dfv"] * weigths[2]) / sum(weigths)
         return score
 
-    def shazim(self, im, thresold=0.75):
+    def shazim(self, im, thresold=0.75, weigths=[1.0,1.0,2.0]):
         bests = []
         for k in self.db.keys():
             if im.path != k:
                 im2 = self.db[k]
-                score = self.predict(im, im2)
+                score = self.predict(im, im2, weigths)
                 if score > thresold:
                     bests.append((k, score))
         bests.sort(key = lambda x : x[1], reverse=True)
         return bests[:10]
-
-
 
 if __name__ == '__main__':
     print("Shazim")
