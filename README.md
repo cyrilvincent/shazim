@@ -3,15 +3,14 @@ Shazim
 
 Shazam images
 
-Based on ImageHash and Tensorflow with the MobileNet model
+Based on Tensorflow with the MobileNet model and ImageHash 
 
 Rationale
 ---------
 
 Shazim retrieve similar images with AI Deep Learning and advanced hash image algorithms
 
-The AI hash use the MobileNet Tensorflow model
-Image hash algorithms analyse the image structure with linear algebra
+The AI hash images with MobileNet Tensorflow neural network then image structure are analysed with linear algebra
 
 Shazim compares images hash to compute the distance between to images
 
@@ -136,6 +135,7 @@ Compare two images:
     im1 = shazim.load_image("ski.jpg")
     im2 = shazim.load_image("ski_copy.jpg")
     res = im1 - im2
+    
 
 Hash image
 
