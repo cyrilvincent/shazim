@@ -232,6 +232,26 @@ Sources hosted at GitHub: https://github.com/CyrilVincent/shazim
 
 http://www.CyrilVincent.com
 
+How it works
+-------
+For the deep learning part I use a pre-trained Deep Learning model call MobileNet because it's the speedest.
+I do a transfert learning and I take only the convolutional network with a flatten layer (without the MLP) with tensorflow.hub feature vector.
+I do a inference and take the flatten layer result, I obtain a 1280 vector of double : it's the hash.
+I compute the cosine distance between two hash to determine the dfv score.
+I do not use VGG16 or Inception or ResNet because they are to slow.
+
+For the linear algebra part I use ImageHash to hash images.
+To compute ah I use average_hash.
+Average hash is very simple and quick: it reduce the image to 8x8 with average points
+To compute dh I use difference_hash.
+Dh is like perceptual_hash which reduce the image to 8x8 in spectral domain with a Discret Cosine Transform (DCT) but with gradients.
+I use only dh because is more effective the ph
+I compute the hamming distance between two hashes to determine dah and ddh score.
+I do not use wavelet_hash because it to slow
+
+Then I ponderates each scores by the weights [1.0,1.0,2.0] repectively for dah, ddh and dfv
+The default thresold is 0.75
+
 Links
 ------
 https://pypi.org/project/ImageHash/
