@@ -36,10 +36,10 @@ Basic usage
 
 
 Images :
-s
-    - Original : <a href="ski.jpg"><img src="ski.jpg" height="100"/></a>
-    - Similarity 100% : <a href="images/ski_copy.jpg"><img src="ski_copy.jpg" height="100"/></a>
-    - Similarity 84% : <a href="images/ski2.jpg"><img src="ski2.jpg" height="100"/></a>
+
+    Original : <a href="ski.jpg"><img src="ski.jpg" height="100"/></a>
+    Similarity 100% : <a href="images/ski_copy.jpg"><img src="images/ski_copy.jpg" height="100"/></a>
+    Similarity 84% : <a href="images/ski2.jpg"><img src="images/ski2.jpg" height="100"/></a>
 
 Avanced usage
 --------------
