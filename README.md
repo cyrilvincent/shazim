@@ -209,6 +209,21 @@ How to code this with Deep Learning only
     weights = [0.0,0.0,1.0] #ad, dh, fv
     shazim.predict(im1, im2, weights)
     
+How to code this with Image Hash only
+
+    from shazim import ShazimEngine
+
+    shazim = ShazimEngine()
+    im1 = shazim.load_image("tumblr1.jpg")
+    im2 = shazim.load_image("tumblr2.jpg")
+    res = im1 - im2
+    res["dah"] #or res["dah"]
+    
+    # or
+    
+    weights = [0.5,0.5,0.0] #ad, dh, fv
+    shazim.predict(im1, im2, weights)
+    
 
 
 
