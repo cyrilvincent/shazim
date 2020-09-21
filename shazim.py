@@ -23,7 +23,7 @@ class ShazimEntity:
         res = {}
         res["dah"] = round(1 - (self.ah - other.ah) / len(self.ah.hash) ** 2, 3)
         res["ddh"] = round(1 - (self.dh - other.dh) / len(self.dh.hash) ** 2, 3)
-        res["dfv"] = round(1 - spatial.distance.cosine(self.fv, other.fv),3)
+        res["dfv"] = round(1 - spatial.distance.cosine(self.fv, other.fvhash), 3)
         return res
 
     def __repr__(self):

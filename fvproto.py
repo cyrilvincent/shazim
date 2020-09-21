@@ -1,26 +1,6 @@
-
-import os
-import imagehash
-import numpy as np
-import time
-import argparse
-import cyrilload
-from scipy import spatial
-from absl import logging
-from typing import Dict
-from PIL import Image
-
 import tensorflow as tf
-import os
-import imagehash
 import numpy as np
-import time
-import argparse
-import cyrilload
 from scipy import spatial
-from absl import logging
-from typing import Dict
-from PIL import Image
 
 path1 = "images/tumblr1.jpg"
 path2 = "images/tumblr2.jpg"
@@ -35,7 +15,7 @@ def load_img(path):
     img = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis, ...]
     return img
 
-def fv(im):
+def fvhash(im):
     """
     https://towardsdatascience.com/image-similarity-detection-in-action-with-tensorflow-2-0-b8d9a78b2509
     :return:
@@ -48,8 +28,8 @@ def __sub__(h1, h2):
 
 im1 = load_img(path1)
 im2 = load_img(path2)
-h1 = fv(im1)
-h2 = fv(im2)
+h1 = fvhash(im1)
+h2 = fvhash(im2)
 print(h1)
 print(h2)
 print(__sub__(h1, h2))

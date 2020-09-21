@@ -14,6 +14,8 @@ The AI analyse images with MobileNet Tensorflow neural network then image struct
 
 Shazim compares images hash to compute the distance between 2 images
 
+Big thanks to Johannes Buchner for the <a href="https://pypi.org/project/ImageHash/">ImageHash library</a> and Google for TensorFlow
+
 Requirements
 -------------
 Based on Tensorflow, Pillow, Numpy, Scipy, ImageHash,
