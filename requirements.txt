@@ -3,4 +3,4 @@ tensorflow-hub
 imagehash
 numpy
 scipy
-PIL
+Pillow
