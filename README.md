@@ -5,14 +5,16 @@ Shazam images
 
 Based on Tensorflow with the MobileNet model and ImageHash 
 
-Rationale
----------
+What it is?
+------------
 
 Shazim retrieve similar images with AI Deep Learning and advanced hash image algorithms
 
 The AI analyse images with MobileNet Tensorflow neural network then image structure are analysed with linear algebra
 
 Shazim compares images hash to compute the distance between 2 images
+
+It's a POC only
 
 Big thanks to Johannes Buchner for the <a href="https://pypi.org/project/ImageHash/">ImageHash</a> library and Google for TensorFlow
 
