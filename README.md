@@ -57,7 +57,6 @@ Text inserted 72%: <a href="images/lenna1.jpg"><img src="images/lenna1.jpg" heig
 Avanced usage
 --------------
 Image directory must be parsed for training before Shazim
-::
 
     shazim.py -p images
 
@@ -74,13 +73,13 @@ Verbose detection
 ------------------
 Thresold = 50% instead of 75%:
 
-    - dah: AverageHash score (generate a 8x8 matrix with average points and compute the hamming distance)
-    - ddh: Difference Hash (generate 8x8 matrix with Discret Cosine Transform from gradients and compute the hamming distance)
-    - dfv: Feature Vector Hash (generate a 1280 vector from the output of the convulational parts of the MobileNet network and compute the cosine distance)
-    - dsize: Image size difference
-    - Wavelets hash are not used beacause it's too slow and perceptual hash are not used because difference hash is better
-    - VGG*, Inception*, ResNet* are not used because the training is too slow
-
+    # dah: AverageHash score (generate a 8x8 matrix with average points and compute the hamming distance)
+    # ddh: Difference Hash (generate 8x8 matrix with Discret Cosine Transform from gradients and compute the hamming distance)
+    # dfv: Feature Vector Hash (generate a 1280 vector from the output of the convulational parts of the MobileNet network and compute the cosine distance)
+    # dsize: Image size difference
+    # Wavelets hash are not used beacause it's too slow and perceptual hash are not used because difference hash is better
+    # VGG*, Inception*, ResNet* are not used because the training is too slow
+    
     shazim.py -v ski.jpg
 
     Parse images
