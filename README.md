@@ -109,7 +109,6 @@ Thresold = 50% instead of 75%:
 API
 ---
 Training:
-::
 
     from shazim import ShazimEngine
 
@@ -119,7 +118,6 @@ Training:
     shazim.save()
 
 Predict:
-::
 
     from shazim import ShazimEngine
 
@@ -129,8 +127,7 @@ Predict:
     thresold = 0.75
     res = shazim.shazim(im, thresold)
 
-Compare two images
-::
+Compare two images:
 
     from shazim import ShazimEngine
 
@@ -140,7 +137,6 @@ Compare two images
     res = im1 - im2
 
 Hash image
-::
 
     from shazim import ShazimEngine
 
@@ -150,12 +146,14 @@ Hash image
     im.dh #Difference hash
     im.fv #MobileNet hash
 
-Source hosted at GitHub: https://github.com/CyrilVincent/shazim
+Sources hosted at GitHub: https://github.com/CyrilVincent/shazim
+
 http://www.CyrilVincent.com
 
 Links
 ------
 https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4
+
 https://pypi.org/project/ImageHash/
 
 
