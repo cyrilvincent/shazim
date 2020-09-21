@@ -36,7 +36,7 @@ Basic usage
 
 
 Images :
-    - <a href="ski.jpg">ski.jpg</a>
+    - <a href="ski.jpg"><img src="ski.jpg" height="100"/></a>
 
 Avanced usage
 --------------
