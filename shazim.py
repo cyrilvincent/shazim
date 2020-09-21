@@ -124,10 +124,10 @@ class ShazimEngine:
             if i % max(10,int(self.nbi / 100)) == 0:
                 print(f"Hash {i + 1}/{self.nbi} in {time.perf_counter() - t:.1f} s")
             im = self.db[k]
-            # try:
-            self.h_image(im)
-            # except Exception as ex:
-            #     print(f"Error with {im}: {ex}")
+            try:
+                self.h_image(im)
+            except Exception as ex:
+                print(f"Error with {im}: {ex}")
             i+=1
         print(f"Hashed in {time.perf_counter() - t:.1f} s")
 

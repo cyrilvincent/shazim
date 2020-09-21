@@ -237,7 +237,7 @@ How it works
 For the deep learning part I use a pre-trained Deep Learning model call MobileNet because it's the speedest.
 I do a transfert learning and I take only the convolutional network with a flatten layer (without the MLP).
 Tensorflow Hub simplify all of the with a pre-trained and configured model: Feature Vector v4.
-I do a inference and take the flatten layer result, I obtain a 1792 vector of double : it's the hash.
+I do a inference and take the flatten layer result, I obtain a vector of 1792 double : it's the hash.
 I compute the cosine distance between two hash to determine the dfv score.
 I do not use VGG16 or Inception or ResNet because they are to slow.
 
@@ -253,6 +253,8 @@ I do not use wavelet_hash because it to slow.
 Then I ponderates each scores by the weights [1.0,1.0,2.0] repectively for dah, ddh and dfv
 The default thresold is 0.75
 
+I tried to implements Google Delf model but it's very to slow
+
 Links
 ------
 https://pypi.org/project/ImageHash/
@@ -266,5 +268,7 @@ https://towardsdatascience.com/image-similarity-detection-in-action-with-tensorf
 https://www.tensorflow.org/hub/common_signatures/image
 
 https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4
+
+https://www.tensorflow.org/hub/tutorials/tf_hub_delf_module
 
 
