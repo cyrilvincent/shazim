@@ -173,7 +173,7 @@ And these images are differents :
     Shazim...
     Found 0 image(s)
 
-Deep Learning wants to detect hat these images are quite similar
+Deep Learning wants to detect that these images are quite similar
 
 Let see the prediction with -v option :
 
@@ -187,7 +187,7 @@ Let see the prediction with -v option :
     # fv : MobileNet detect well at 86%
     # Ponderation between hash methodes are weights = [1.0,1.0,2.0]
 
-How to changes ponderation betweens models :
+How to changes weights betweens models :
 
     from shazim import ShazimEngine
 
@@ -250,7 +250,8 @@ I use only dh because is more effective the ph.
 I compute the hamming distance between two hashes to determine dah and ddh score.
 I do not use wavelet_hash because it to slow.
 
-Then I ponderates each scores by the weights [1.0,1.0,2.0] repectively for dah, ddh and dfv
+Then I ponderates each scores by the weights [1.0,1.0,2.0] repectively for dah, ddh and dfv.
+Then I ponderates each scores by the weights [1.0,1.0,2.0] repectively for dah, ddh and dfv.
 The default thresold is 0.75
 
 I tried to implements Google Delf model but it's very to slow
