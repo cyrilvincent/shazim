@@ -24,7 +24,6 @@ Easy installation
 
 Basic usage
 ------------
-::
 
     shazim.py ski.jpg
 
@@ -40,6 +39,22 @@ Original : <a href="ski.jpg"><img src="ski.jpg" height="100"/></a>
 Similarity 100% : <a href="images/ski_copy.jpg"><img src="images/ski_copy.jpg" height="100"/></a>
 Similarity 84% : <a href="images/ski2.jpg"><img src="images/ski2.jpg" height="100"/></a>
 Similarity 75% : <a href="images/000000037689.jpg"><img src="images/000000037689.jpg" height="100"/></a>
+
+Detect modified image from originals
+
+    shazim.py lenna.jpg
+
+    Found 3 image(s)
+    images\lenna.png at 100%
+    images\lenna-crop.jpg at 93%
+    images\lenna1.jpg at 72%
+
+
+Images :
+Original : <a href="lenna.jpg"><img src="lenna.jpg" height="100"/></a>
+Similarity 100% : <a href="images/lenna.jpg"><img src="images/lenna.jpg" height="100"/></a>
+Cropped image 93% : <a href="images/lenna-crop.jpg"><img src="images/lenna-crop.jpg" height="100"/></a>
+Text inserted 72% : <a href="images/lenna1.jpg"><img src="images/lenna1.jpg" height="100"/></a>
 
 Avanced usage
 --------------
