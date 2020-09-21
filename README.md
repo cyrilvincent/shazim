@@ -8,12 +8,12 @@ Based on ImageHash and Tensorflow with the MobileNet model
 Rationale
 ---------
 
-Shazim retrieve similar images with hash technics and AI
+Shazim retrieve similar images with AI Deep Learning and advanced hash image algorithms
 
 The AI hash use the MobileNet Tensorflow model
-Image hash algorithms analyse the image structure
+Image hash algorithms analyse the image structure with linear algebra
 
-Shazim compares images hash to determine to compute the distance (score) between to image
+Shazim compares images hash to compute the distance between to images
 
 Requirements
 -------------
@@ -73,10 +73,11 @@ Image directory must be parsed for training before Shazim
 Verbose detection
 ------------------
 Thresold = 50% instead of 75%:
-    - dah: AverageHash score (compare a 8x8 matrix with average points with hamming distance)
-    - ddh: Difference Hash (compare 8x8 matrix with Discret Cosine Transform from gradients with hamming distance)
-    - dfv: Feature Vector Hash (compare a 1280 vector from the output of the convulational parts of the MobileNet network with Cosine distance)
+    - dah: AverageHash score (generate a 8x8 matrix with average points and compute the hamming distance)
+    - ddh: Difference Hash (generate 8x8 matrix with Discret Cosine Transform from gradients and compute the hamming distance)
+    - dfv: Feature Vector Hash (generate a 1280 vector from the output of the convulational parts of the MobileNet network and compute the cosine distance)
     - dsize: Image size difference
+    - note that wavelets hash are not used beacause it's too slow and perceptual hash are not used because difference hash is better
 
 ::
 
