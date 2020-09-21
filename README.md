@@ -17,10 +17,12 @@ Shazim compares images hash to compute the distance between to images
 
 Requirements
 -------------
-Based on Tensorflow, Pillow, numpy, scipy, ImageHash,
-Easy installation
+Based on Tensorflow, Pillow, Numpy, Scipy, ImageHash,
+
+Easy installation, tested with Python 3.7 & Tensorflow 2.3
 
 	pip install -r requirements.txt
+	python shazim.py ski.jpg
 
 Basic usage
 ------------
