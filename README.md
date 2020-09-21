@@ -10,9 +10,11 @@ What it is?
 
 Shazim retrieve similar images with AI Deep Learning and advanced hash image algorithms
 
-The AI analyse images with MobileNet Tensorflow neural network then image structure are analysed with linear algebra
+The AI analyse images with MobileNet Tensorflow neural network and image are also analysed with complex linear algebra
 
-Shazim compares images hash to compute the distance between 2 images
+A signature (hashcode) is computed for each image
+
+Shazim compares images signature to compute the distance between 2 images
 
 It's a POC only
 
