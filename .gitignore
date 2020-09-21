@@ -1,0 +1,13 @@
+**/hubmodule/**
+**/.idea/**
+**/data/**
+**/dist/**
+**/build/**
+**/bin/**
+**/obj/**
+**/packages/**
+**/.vs/**
+**/images/**
+**/outputs/**
+**/__pycache__/**
+**/*.pickle
