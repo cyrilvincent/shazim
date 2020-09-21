@@ -78,9 +78,8 @@ Thresold = 50% instead of 75%:
     - ddh: Difference Hash (generate 8x8 matrix with Discret Cosine Transform from gradients and compute the hamming distance)
     - dfv: Feature Vector Hash (generate a 1280 vector from the output of the convulational parts of the MobileNet network and compute the cosine distance)
     - dsize: Image size difference
-    - note that wavelets hash are not used beacause it's too slow and perceptual hash are not used because difference hash is better
-
-::
+    - Wavelets hash are not used beacause it's too slow and perceptual hash are not used because difference hash is better
+    - VGG*, Inception*, ResNet* are not used because the training is too slow
 
     shazim.py -v ski.jpg
 
