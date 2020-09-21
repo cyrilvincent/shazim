@@ -10,9 +10,9 @@ Rationale
 
 Shazim retrieve similar images with AI Deep Learning and advanced hash image algorithms
 
-The AI hash images with MobileNet Tensorflow neural network then image structure are analysed with linear algebra
+The AI analyse images with MobileNet Tensorflow neural network then image structure are analysed with linear algebra
 
-Shazim compares images hash to compute the distance between to images
+Shazim compares images hash to compute the distance between 2 images
 
 Requirements
 -------------
