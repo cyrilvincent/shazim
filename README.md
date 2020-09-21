@@ -149,9 +149,10 @@ Hash image
     
 Understand Image Hashing vs Deep Learning
 
-Image hashing compute a 8x8 matrix and detect similar image or photoshoed image
-For Image Hashing those images are the same
-<a href="images/forest-high.jpg"><img src="images/forest-high.jpg" height="100"/></a> vs <a href="images/forest-copyright.jpg"><img src="images/forest-copyright.jpg" height="100"/></a>
+Image hashing compute a 8x8 matrix and detect similar image or photoshoped image
+
+For Image Hashing those images are the same :
+<a href="images/forest-high.jpg"><img src="images/forest-high.jpg" height="100"/></a> <a href="images/forest-copyright.jpg"><img src="images/forest-copyright.jpg" height="100"/></a>
     
     shazim.py images\forest-high.jpg
     
@@ -159,8 +160,8 @@ For Image Hashing those images are the same
     Found 1 image(s)
     images\forest-copyright.jpg at 98%
 
-And those images are differents
-<a href="images/tumblr1.jpg"><img src="images/tumblr1.jpg" height="100"/></a> vs <a href="images/tumblr2.jpg"><img src="images/tumblr2.jpg" height="100/></a>
+And those images are differents :
+<a href="images/tumblr1.jpg"><img src="images/tumblr1.jpg" height="100"/></a> <a href="images/tumblr2.jpg"><img src="images/tumblr2.jpg" height="100"/></a>
 
     shazim.py images\tumblr1.jpg
     
