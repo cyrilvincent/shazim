@@ -11,7 +11,14 @@ from absl import logging
 from typing import Dict
 from PIL import Image
 
-__VERSION__ = "0.0.1"
+__version__ = "0.0.1"
+__author__ = "Cyril Vincent"
+__copyright__ = "Copyright 2020, Cyril Vincent Conseil"
+__credits__ = ["Johannes Buchner"]
+__license__ = "GPL"
+__maintainer__ = "Rob Knight"
+__email__ = "contact@cyrilvincent.com"
+__status__ = "POC"
 
 class ShazimEntity:
 
@@ -164,7 +171,7 @@ class ShazimEngine:
 if __name__ == '__main__':
     print("Shazim")
     print("======")
-    print(f"V{__VERSION__}")
+    print(f"V{__version__}")
     parser = argparse.ArgumentParser(description="Shazim")
     parser.add_argument("path", help="Path")
     parser.add_argument("-p","--parse", action="store_true", help="Parse the path directory")
