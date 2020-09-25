@@ -5,10 +5,13 @@ import numpy as np
 import time
 import argparse
 import cyrilload
+import logging
 from scipy import spatial
 from absl import logging
 from typing import Dict
 from PIL import Image
+
+__VERSION__ = "0.0.1"
 
 class ShazimEntity:
 
@@ -36,7 +39,7 @@ class ShazimService:
         self.path = path
         if ShazimService.fvmodel == None:
             logging.set_verbosity(logging.ERROR)
-            print(f"Load TensorFlow model: ")
+            logging.info(f"Load TensorFlow model: ")
             ShazimService.fvmodel = tf.saved_model.load("hubmodule/feature-vector.4")
         self.pil = Image.open(path)
         self.size = os.stat(path)[6]
@@ -90,10 +93,10 @@ class ShazimEngine:
         self.nbi = 0
         t = time.perf_counter()
         self._parse(path)
-        print(f"Found {self.nbi} images in {time.perf_counter() - t:.1f} s")
+        logging.info(f"Found {self.nbi} images in {time.perf_counter() - t:.1f} s")
 
     def _parse(self, path):
-        print(f"Parse {path}")
+        logging.info(f"Parse {path}")
         for file in os.listdir(path):
             name = os.path.join(path, file)
             if os.path.isfile(name):
@@ -117,19 +120,19 @@ class ShazimEngine:
         self.nbi = len(self.db)
 
     def train(self):
-        print(f"Hashing")
+        logging.info(f"Hashing")
         t = time.perf_counter()
         i = 0
         for k in self.db.keys():
             if i % max(10,int(self.nbi / 100)) == 0:
-                print(f"Hash {i + 1}/{self.nbi} in {time.perf_counter() - t:.1f} s")
+                logging.info(f"Hash {i + 1}/{self.nbi} in {time.perf_counter() - t:.1f} s")
             im = self.db[k]
             try:
                 self.h_image(im)
             except Exception as ex:
-                print(f"Error with {im}: {ex}")
+                logging.info(f"Error with {im}: {ex}")
             i+=1
-        print(f"Hashed in {time.perf_counter() - t:.1f} s")
+        logging.info(f"Hashed in {time.perf_counter() - t:.1f} s")
 
     def load_image(self, path):
         im = ShazimEntity(path)
@@ -161,6 +164,7 @@ class ShazimEngine:
 if __name__ == '__main__':
     print("Shazim")
     print("======")
+    print(f"V{__VERSION__}")
     parser = argparse.ArgumentParser(description="Shazim")
     parser.add_argument("path", help="Path")
     parser.add_argument("-p","--parse", action="store_true", help="Parse the path directory")

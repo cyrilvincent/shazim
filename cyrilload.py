@@ -1,6 +1,7 @@
 import json
 import pickle
 import jsonpickle
+import logging
 
 def load(path):
     """
@@ -9,7 +10,7 @@ def load(path):
     :return: the pickle object
     """
     ext = path.split(".")[-1]
-    print(f"Load {path}")
+    logging.info(f"Load {path}")
     if ext == "pickle":
         with open(path, "rb") as f:
             db = pickle.load(f)
@@ -38,7 +39,7 @@ def save(db, name, prefix="", method="pickle"):
         name += ".pretty.json"
     else:
         raise ValueError(f"Unknown method {method}")
-    print(f"Save {name}")
+    logging.info(f"Save {name}")
     if method == "pickle":
         with open(name,"wb") as f:
             pickle.dump(db, f)
